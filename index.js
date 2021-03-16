@@ -11,5 +11,5 @@ const server = new ApolloServer({
 
 /** Iniciando el servicio */
 server.listen().then(({url}) => {
-  console.log(`Servidor iniciado en la URL ${url}`)
+  console.log(`🚀 Servidor iniciado en la URL ${url}`)
 })
