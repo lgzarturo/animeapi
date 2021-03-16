@@ -2,6 +2,10 @@ const { ApolloServer } = require('apollo-server')
 
 const typeDefs = require('./graphql/schema')
 const resolvers = require('./graphql/resolvers')
+const connectDb = require('./config/db')
+
+/** Conectando con la base de datos de mongo */
+connectDb()
 
 /** Configurando el servidor de Apollo */
 const server = new ApolloServer({
