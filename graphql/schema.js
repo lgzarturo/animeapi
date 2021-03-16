@@ -8,8 +8,11 @@ module.exports = gql`
   type Power {
     power: String
   }
+  input CharacterInput {
+    power: String 
+  }
   type Query {
-    getCharacters: [Character]
+    getCharacters(input: CharacterInput!): [Character]
     getCharacter: Character
     getPowers: [Power]
   }
