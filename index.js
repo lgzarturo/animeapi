@@ -6,7 +6,16 @@ const resolvers = require('./graphql/resolvers')
 /** Configurando el servidor de Apollo */
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: () => {
+    const contextData = {
+      username: 'lgzarturo',
+      email: 'arthurolg@gmail.com'
+    }
+    return {
+      contextData
+    }
+  }
 })
 
 /** Iniciando el servicio */
