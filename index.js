@@ -20,11 +20,14 @@ const characters = [
 const typeDefs = gql`
   type Character {
     name: String
+  }
+  type Power {
     power: String
   }
   type Query {
     getCharacters: [Character]
     getCharacter: Character
+    getPowers: [Power]
   }
 `
 
@@ -35,7 +38,8 @@ const resolvers = {
     getCharacter: () => { 
       const item = Math.floor(Math.random() * characters.length)
       return characters[item]
-    }
+    },
+    getPowers: () => characters
   }
 }
 
