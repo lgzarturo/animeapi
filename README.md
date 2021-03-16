@@ -25,3 +25,41 @@ El schema es la descripción de los objetos que conforman a los datos de la apli
 El Resolver se encarga de la comunicacion entre el lenguaje del servidor y los datos. Son funciones que se encargan de retornar los valores y mostrarlos segun el schema.
 
 El nombre del resolver debe ser igual a lo definido en el schema.
+
+### Consultas de graphql
+
+```graphql
+query {
+  getCharacter {
+    name
+  }
+  getPowers {
+    power
+  }
+  getCharacters(input: {
+    power: "Ki"
+  }) {
+    name
+  }
+}
+```
+
+### Pasar parametros al query
+
+```graphql
+query getCharacters($input: CharacterInput!) {
+  getCharacters(input: $input) {
+    name
+  }  
+}
+```
+
+Query variables:
+
+```json
+{
+  "input": {
+    "power": "Ki"
+  }
+}
+```

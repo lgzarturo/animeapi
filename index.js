@@ -1,55 +1,28 @@
-const { ApolloServer, gql } = require('apollo-server')
+const { ApolloServer } = require('apollo-server')
 
-/** Dummy data */
-const characters = [
-  {
-    name: 'Monkey D. Luffy',
-    power: 'Poder de la fruta goma goma'
-  },
-  {
-    name: 'Son Goku',
-    power: 'Ki'
-  },
-  {
-    name: 'Uzumaki Naruto',
-    power: 'Elemento aire'
-  }
-]
+const typeDefs = require('./graphql/schema')
+const resolvers = require('./graphql/resolvers')
+const connectDb = require('./config/db')
 
-/** Schema */
-const typeDefs = gql`
-  type Character {
-    name: String
-  }
-  type Power {
-    power: String
-  }
-  type Query {
-    getCharacters: [Character]
-    getCharacter: Character
-    getPowers: [Power]
-  }
-`
-
-/** Resolver */
-const resolvers = {
-  Query: {
-    getCharacters: () => characters,
-    getCharacter: () => { 
-      const item = Math.floor(Math.random() * characters.length)
-      return characters[item]
-    },
-    getPowers: () => characters
-  }
-}
+/** Conectando con la base de datos de mongo */
+connectDb()
 
 /** Configurando el servidor de Apollo */
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: () => {
+    const contextData = {
+      username: 'lgzarturo',
+      email: 'arthurolg@gmail.com'
+    }
+    return {
+      contextData
+    }
+  }
 })
 
 /** Iniciando el servicio */
 server.listen().then(({url}) => {
-  console.log(`Servidor iniciado en la URL ${url}`)
+  console.log(`🚀 Servidor iniciado en la URL ${url}`)
 })
