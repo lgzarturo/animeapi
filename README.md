@@ -63,3 +63,27 @@ Query variables:
   }
 }
 ```
+
+## Crear un nuevo personaje
+
+```graphql
+mutation newCharacter($input: CharacterInput!) {
+  newCharacter(input: $input) {
+    id
+    fullname
+    createdAt
+  }
+}
+```
+
+Query variables:
+
+```json
+{
+  "input": {
+    "fullname": "Zoro Roronoa",
+    "alias": "Zoro",
+    "race": "Human"
+  }
+}
+```
