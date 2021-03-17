@@ -1,15 +1,15 @@
 /** Dummy data */
 const characters = [
   {
-    name: 'Monkey D. Luffy',
+    fullname: 'Monkey D. Luffy',
     power: 'Poder de la fruta goma goma'
   },
   {
-    name: 'Son Goku',
+    fullname: 'Son Goku',
     power: 'Ki'
   },
   {
-    name: 'Uzumaki Naruto',
+    fullname: 'Uzumaki Naruto',
     power: 'Elemento aire'
   }
 ]
