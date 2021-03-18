@@ -1,16 +1,17 @@
 const mongoose = require('mongoose')
 
-const CharacterSchema = mongoose.Schema({
-  fullname: {
+const PowerSchema = mongoose.Schema({
+  power: {
     type: String,
     require: true,
     trim: true
   },
-  alias: {
+  type: {
     type: String,
+    require: true,
     trim: true
   },
-  race: {
+  description: {
     type: String,
     trim: true
   },
@@ -20,4 +21,4 @@ const CharacterSchema = mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Character', CharacterSchema)
+module.exports = mongoose.model('Power', PowerSchema)

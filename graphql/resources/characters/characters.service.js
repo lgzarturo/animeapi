@@ -1,11 +1,13 @@
-const Character = require('./character.model')
+const Character = require('./characters.model')
 
 function listAll() {
   return Character.find({})
+    .populate('appearsIn').populate('power')
 }
 
 function getOneByAlias(alias) {
   return Character.findOne({alias})
+    .populate('appearsIn').populate('power')
 }
 
 function getOneByAliasOrFullname(alias, fullname) {
@@ -14,6 +16,7 @@ function getOneByAliasOrFullname(alias, fullname) {
       {'fullname': fullname},
       {'alias': alias}
     ])
+    .populate('appearsIn').populate('power')
 }
 
 function create(input) {
